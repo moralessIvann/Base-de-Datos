@@ -1,0 +1,7 @@
+drop trigger actualiza_articulo
+delimiter $
+create trigger actualiza_articulo after insert on tienda
+for each row
+begin
+    update articulo set Stock = Stock - new.Stock where idArticulo = new.Articulo_idArticulo;
+end $

@@ -1,0 +1,8 @@
+drop function contarInventario;
+DELIMITER //
+create function contarInventario_Articulo(Nom varchar(150)) RETURNS integer
+BEGIN
+declare suma integer;
+	select sum(stock) into suma  from articulo where Nombre = Nom;
+    RETURN suma;
+END //

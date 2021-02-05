@@ -1,0 +1,15 @@
+drop procedure if exists Venta
+delimiter $$
+create procedure Venta(in idTienda int, in Nombre varchar(150),
+					   in Direccion varchar(150),in Telefono int,
+                       in Stock int,in Articulo_idArticulo int)
+begin
+declare existencia integer;
+	if (idTienda is not null) then
+		select Stock into existencia from articulo where idArticulo = Articulo_idArticulo;
+		if (existencia > Stock) then 
+		set existencia = Stock;
+		end if;
+		insert into tienda values(idTienda,Nombre,Direccion,Telefono,Stock,Articulo_idArticulo);
+	end if;
+end $$

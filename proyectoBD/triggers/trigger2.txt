@@ -1,0 +1,11 @@
+delimiter $
+CREATE TRIGGER after_articulo_insert
+before insert on articulo	
+for each row
+begin
+declare aux date;
+	if(new.FechaCaducidad is null) then
+    select  DATE(DATE_ADD(now(), INTERVAL 1 MONTH)) into aux;
+		set new.Fechacaducidad = aux; 
+    end if;
+end $
