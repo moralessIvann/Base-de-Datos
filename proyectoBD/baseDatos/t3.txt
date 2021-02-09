@@ -1,0 +1,5 @@
+#delete from articulo where idArticulo >2 and idArticulo <5;
+
+#select *from articulo;
+
+#call vali(3, 'galletas', '563453', 'Gamesa', -1, 'piezas', '0000-00-00', 1, 1 );  /*3*/
